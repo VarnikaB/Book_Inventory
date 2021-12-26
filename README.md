@@ -69,7 +69,7 @@ It is a web application for book inventory management. Imagine you are managing 
 <br />
 <br />
 
-### 8. The user can delete store or book by clicking on :wastebasket: `Delete` present beside th store and book.
+### 8. The user can delete store or book by clicking on :wastebasket: `Delete` present beside the store and book.
 <br />
 <br />
 
