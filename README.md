@@ -21,7 +21,7 @@ It is a web application for book inventory management. Imagine you are managing 
 <br />
 <br />
 
-### 2. After sucessful login, the user will be able to see all his available stores.<br />
+### 2. After successful login, the user will be able to see all his available stores.<br />
 
 ![View All Stores](/WebsiteImages/stores_overview.png)
 <br />
