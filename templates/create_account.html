@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> Create New Account </title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <link rel="icon" type="image/x-icon" href="/static/logo.png">
+    </head>
+    <style>
+	html,body{
+background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+}
+
+.container{
+height: 100%;
+align-content: center;
+}
+
+.card{
+  margin-left: 40%;
+height: 500px;
+margin-top: 2%;
+margin-bottom: auto;
+width: 400px;
+background-color: rgba(0,0,0,0.5) !important;
+}
+
+.card-header h3{
+color: white;
+}
+
+.input-group-prepend span{
+width: 50px;
+background-color: #FFC312;
+color: black;
+border:0 !important;
+}
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+}
+.login_btn{
+color: black;
+background-color: #FFC312;
+width: 100px;
+}
+
+.login_btn:hover{
+color: black;
+background-color: white;
+}
+
+.links{
+color: white;
+}
+
+.links a{
+margin-left: 4px;
+}
+label{
+  color: antiquewhite;
+}
+</style>
+    <body><div class="card">
+			<div class="card-header">
+				<h3>Sign Up</h3>
+			</div>
+			<div class="card-body">
+				<form autocomplete="on" action="/create" method="post" id="login">
+                <div class="mb-3">
+                    <label for="user" class="form-label">&nbsp;Username : </label>
+                    <input id="user" class= "form-control" name="username" style="width: 20rem;margin-left: 8px;" type="text" placeholder="  Username" required>
+                </div>
+                <div class=mb-3>
+                    <label for="pwd" class="form-label">&nbsp;Password : </label>
+                    <input id="pwd" class= "form-control" name="pass" style="width: 20rem;margin-left: 8px;" type="password" placeholder="  Password" required>
+                </div>
+                
+                    <button type="submit" class=" btn btn-primary"  >Create Account</button>
+                    <a href="/login" type="submit" class=" btn btn-primary"  >Go Back</a>
+                    <div style="padding:1rem;"></div>
+
+        </form>
+			</div>
+		</div>
+        
+    </body>
+</html>

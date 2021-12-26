@@ -1,0 +1,97 @@
+{% extends "overview.html" %}
+{% block content %}
+
+<div class="container">
+
+<h1>{{storeid}} </h1>
+<div >
+  <h3 style="display: inline-block;margin:0;"> Add or remove Books</h3>
+  {%          if flag %}
+          <p><strong>Store Already Exist!!</strong></p>
+          {%endif%}
+  <button type="button" class="btn btn-add" data-toggle="modal" data-target="#exampleModal">
+   <span class="btn-icon-add"><i class="glyphicon glyphicon-plus"></i></span>Add Book</button>
+</div>
+
+<!-- Modal code-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top:150px;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Add Book</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/{{username}}/{{storeid}}/addBook" method = "POST">
+            <p>Book ID:  <input type = "text" id="bookid" name="bookid" /></p>
+          <p>Book Name:  <input type = "text" id="bookname" name="bookname" /></p>
+          <p><input type = "submit" value = "Submit" class="btn btn-primary"/></p>
+        </form>   
+      </div>
+      
+    </div>
+  </div>
+</div>
+<!--end of modal design-->
+
+<table class="table table-hover">
+<thead>
+ <tr>
+   <th>ID</th>
+   <th>Name</th>
+   <th>Quantity</th>
+   <th></th>
+   <th></th>
+ </tr>
+</thead>
+<tbody>
+  {% for d in details %}
+  <tr>
+    <td>{{d[0]}}</td>
+    <td>{{d[1]}}</td>   
+    <td>{{d[2]}}</td>
+    {% if d[2] == 0
+         %}
+         <td><strong style="color:red">Out of Stock</strong></td>
+         <td></td>
+    {% else %}
+    <td>
+        <button type="button" class="btn btn-edit" data-toggle="modal" data-target ="#edit{{d[0]}}">
+        <span class="btn-icon"><i class="glyphicon glyphicon-pencil"></i></span>Edit</button>
+    </td>
+    <div class="modal fade" id="edit{{d[0]}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top:150px;">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Edit Book</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div id="modal-cont" class="modal-body" >
+             <form action="/{{username}}/{{storeid}}/{{d[0]}}/editBook" method = "POST">
+               <p>Book Id:</p><input type="number" name="bookid_edit" value="{{d[0]}}" disabled/>
+               <p>Book Name: </p><input type="text" name="bookname_edit" value="{{d[1]}}" disabled/>
+               <p>Quantity: <input type = "text" id="qty" name="qty_edit" value="{{d[2]}}" min="0" /></p>
+               <p><input type = "submit" value = "Submit" class="btn btn-primary"/></p>
+             </form> 
+           
+         </div>
+       </div>
+       </div>
+      </div>
+   <td>
+      <a href="/{{username}}/{{storeid}}/{{d[0]}}/deleteBook">
+       <button type="button" class="btn btn-delete">
+       <span class="btn-icon"><i class="glyphicon glyphicon-trash"></i></span>Delete</button>
+   </td>
+   {% endif %}
+ </tr>
+{% endfor %}
+</tbody>
+
+</table>
+</div>
+{% endblock content %}
