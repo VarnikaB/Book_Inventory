@@ -2,7 +2,7 @@ import sqlite3
 con = sqlite3.connect('database.db', check_same_thread=False)
 
 cur = con.cursor()
-
+'''
 cur.execute("""
         CREATE TABLE "User" ( 
             "Username" TEXT, 
@@ -20,7 +20,8 @@ CREATE TABLE "Store" (
     FOREIGN KEY("Username") REFERENCES "User"("Username"), 
     PRIMARY KEY("Store_ID" AUTOINCREMENT) );""")
 
-con.commit()
+con.commit()'''
+cur.execute("DROP TABLE Books")
 
 cur.execute("""
     CREATE TABLE "Books" ( 
@@ -29,6 +30,6 @@ cur.execute("""
         "Number_of_books" INTEGER, 
         "Store_id" INTEGER, 
         FOREIGN KEY("Store_id") REFERENCES "Store"("Store_ID") ON DELETE CASCADE,
-         PRIMARY KEY("Book_ID") );
+         PRIMARY KEY("Book_ID","Store_id") );
     """)
 con.commit()
